@@ -1,7 +1,6 @@
 import { React, useRef } from 'react'
 import MainPage from './MainPage';
 
-
 export default function LandingPage( { validation } ) {
 
   const input = useRef("input");
@@ -50,9 +49,9 @@ export default function LandingPage( { validation } ) {
   }
   
   return (
-    <>
+    <div className="lobby">
       <h2>Validate UW Email</h2>
-      <input defaultValue={"enter email"} ref={input} type="text"/>
+      <input defaultValue={"Enter Your UW NetId (@uw.edu)"} ref={input} type="text"/>
       <button onClick={submitButtonClicked}>Submit</button>
     </>
   )
