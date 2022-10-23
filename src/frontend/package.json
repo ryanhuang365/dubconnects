@@ -9,6 +9,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+<<<<<<< Updated upstream
+=======
+    "sass": "^1.55.0",
+    "twilio-video": "^2.24.3",
+>>>>>>> Stashed changes
     "web-vitals": "^2.1.4"
   },
   "scripts": {

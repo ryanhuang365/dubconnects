@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,6 +21,17 @@ function App() {
       </header>
     </div>
   );
+=======
+import React from 'react';
+import LandingPage from './pages/LandingPage';
+import MainPage from './pages/MainPage';
+import TestingApp from './Testing/TestingApp';
+
+function App() {
+  return (
+    <TestingApp />
+  )
+>>>>>>> Stashed changes
 }
 
 export default App;
