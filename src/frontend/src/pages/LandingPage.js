@@ -13,13 +13,13 @@ export default function LandingPage( { validation } ) {
       if(!checkValidUWEmail(email)){
         input.current.value = "invalid email";
       }else{
-        fetch(`http://localhost:8080/verify/${email}` /*`https://dubconnects.azurewebsites.net/verify/${email}`*/, { method: 'GET' });
+        fetch(/*`http://localhost:8080/verify/${email}`*/ `https://dubconnects.azurewebsites.net/verify/${email}`, { method: 'GET' });
         emailSent = true;
         input.current.value = "enter validation code";
       }
     }else{
       const validationCode = input.current.value;
-      const validityPromise = fetch(`http://localhost:8080/checkCode/${validationCode}` /*`https://dubconnects.azurewebsites.net/checkCode/${validationCode}`*/, { method: 'GET' });
+      const validityPromise = fetch(/*`http://localhost:8080/checkCode/${validationCode}`*/ `https://dubconnects.azurewebsites.net/checkCode/${validationCode}`, { method: 'GET' });
       
       
       validityPromise.then(response => {

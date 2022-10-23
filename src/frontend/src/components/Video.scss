@@ -1,0 +1,20 @@
+.left {
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    bottom:100vh;
+    right:50vw;
+
+    padding: 0;
+    margin: 0;
+}
+.right{
+    position: absolute;
+    top: 0vh;
+    left: 50vw;
+    bottom:100vh;
+    right:100vw;
+
+    padding: 0;
+    margin: 0;
+}
