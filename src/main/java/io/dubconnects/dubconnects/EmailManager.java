@@ -22,6 +22,9 @@ public class EmailManager {
     
     @Autowired
     private JavaMailSender mailSender;
+
+    private String randomCode;
+    private Set<String> codes = new HashSet<>();
  
     // should check on front end if the email ends with @uw.edu 
     @GetMapping("/verify/{email}")
@@ -39,7 +42,9 @@ public class EmailManager {
         String fromAddress = "dubconnects.noreply@gmail.com";
         String senderName = "DubConnects";
         String subject = "Please verify your email";
-        String randomCode = Integer.toString((int)Math.floor(Math.random()*(1000000 -100000) + 100000));
+    
+        randomCode = Integer.toString((int)Math.floor(Math.random()*(10000000 - 1000000) + 1000000));
+        codes.add(randomCode);
         // if extra time, try to figure out how to send link
         String content = "Verification Code: " + randomCode;
         
@@ -61,6 +66,16 @@ public class EmailManager {
         mailSender.send(message);   
     }
 
+    @GetMapping("/checkCode/{userInput}")
+    public boolean checkRandomCode(@PathVariable String userInput){
+        System.out.println("recieved: " + userInput);
+        if(codes.contains(userInput)){
+            codes.remove(userInput);
+            System.out.println(userInput + " was removed");
+            return true;
+        }
+        return false; 
+    }
    
          
 }
