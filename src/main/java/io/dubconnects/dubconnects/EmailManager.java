@@ -1,0 +1,55 @@
+package io.dubconnects.dubconnects;
+import java.util.*;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import java.io.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.*;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class EmailManager {
+    
+    @Autowired
+    private JavaMailSender mailSender;
+ 
+    // should check on front end if the email ends with @uw.edu 
+
+
+    // call sendVerificationEmail when the email submit butotn is pressed
+    // change User to String email passed in by frontend textbox
+    private void sendVerificationEmail(String email, String siteURL)
+        throws MessagingException, UnsupportedEncodingException {
+        String toAddress = email;
+        String fromAddress = "dubconnects.noreply@gmail.com";
+        String senderName = "DubConnects";
+        String subject = "Please verify your email";
+        String randomCode = Integer.toString((int) Math.random() * 10000);
+        // if extra time, try to figure out how to send link
+        String content = "Verification Code: " + randomCode;
+        
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+        
+        helper.setFrom(fromAddress, senderName);
+        helper.setTo(toAddress);
+        helper.setSubject(subject);
+        
+        
+        //String verifyURL = siteURL + "/verify?code=" + randomCode;
+        
+        //content = content.replace("[[URL]]", verifyURL);
+        
+        //helper.setText(content, true);
+        
+        mailSender.send(message);   
+    }
+
+   
+         
+}
