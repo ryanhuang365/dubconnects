@@ -15,7 +15,7 @@ export default function MainPage() {
   async function joinRoom(token){
     createLocalTracks({
       audio: true,
-      video: { width: 640 }
+      video: { width: 727 }
     }).then(localTracks => {
       return connect(token, {
         tracks: localTracks

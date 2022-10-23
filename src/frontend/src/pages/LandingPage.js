@@ -1,5 +1,6 @@
 import { React, useRef } from 'react'
-import MainPage from './MainPage';
+import Logo from '../img/Logo.png';
+import '../App.scss'
 
 export default function LandingPage( { validation } ) {
 
@@ -50,9 +51,10 @@ export default function LandingPage( { validation } ) {
   
   return (
     <div className="lobby">
+      <img src={Logo} alt='Logo' />
       <h2>Validate UW Email</h2>
       <input defaultValue={"Enter Your UW NetId (@uw.edu)"} ref={input} type="text"/>
       <button onClick={submitButtonClicked}>Submit</button>
-    </>
+    </div>
   )
 }

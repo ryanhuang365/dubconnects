@@ -12,6 +12,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.55.0",
+    "scss": "^0.2.4",
     "twilio-video": "^2.24.3",
     "web-vitals": "^2.1.4"
   },
