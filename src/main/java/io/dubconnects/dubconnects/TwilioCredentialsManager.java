@@ -13,15 +13,16 @@ public class TwilioCredentialsManager {
     private static String KEY_SID;
     private static String KEY_SECRET;
 
-    public TwilioCredentialsManager() throws FileNotFoundException{
-        Scanner twilioCredentialsScanner = new Scanner(new File(System.getProperty("user.dir") +
-                "\\src\\main\\java\\io\\dubconnects\\dubconnects\\" + "TwilioCredentials.txt"));
-        ACCOUNT_SID = twilioCredentialsScanner.nextLine();
-        AUTH_TOKEN = twilioCredentialsScanner.nextLine();
-        KEY_SID = twilioCredentialsScanner.nextLine();
-        KEY_SECRET = twilioCredentialsScanner.nextLine();
+    public TwilioCredentialsManager() throws IOException {
+        InputStream in = getClass().getResourceAsStream("/TwilioCredentials.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-        twilioCredentialsScanner.close();
+        ACCOUNT_SID = br.readLine();
+        AUTH_TOKEN = br.readLine();
+        KEY_SID = br.readLine();
+        KEY_SECRET = br.readLine();
+
+        br.close();
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
