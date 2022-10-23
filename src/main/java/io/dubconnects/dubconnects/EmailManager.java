@@ -20,16 +20,16 @@ public class EmailManager {
  
     // should check on front end if the email ends with @uw.edu 
 
-
-    // call sendVerificationEmail when the email submit butotn is pressed
+    
+    // call sendVerificationEmail when the email submit button is pressed
     // change User to String email passed in by frontend textbox
-    private void sendVerificationEmail(String email, String siteURL)
+    public void sendVerificationEmail(String email)
         throws MessagingException, UnsupportedEncodingException {
         String toAddress = email;
         String fromAddress = "dubconnects.noreply@gmail.com";
         String senderName = "DubConnects";
         String subject = "Please verify your email";
-        String randomCode = Integer.toString((int) Math.random() * 10000);
+        String randomCode = Integer.toString((int)Math.floor(Math.random()*(1000000 -100000) + 100000));
         // if extra time, try to figure out how to send link
         String content = "Verification Code: " + randomCode;
         
@@ -45,8 +45,9 @@ public class EmailManager {
         
         //content = content.replace("[[URL]]", verifyURL);
         
-        //helper.setText(content, true);
+        helper.setText(content, true);
         
+
         mailSender.send(message);   
     }
 
