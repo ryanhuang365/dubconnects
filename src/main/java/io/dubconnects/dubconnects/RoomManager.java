@@ -1,12 +1,10 @@
 package io.dubconnects.dubconnects;
 
 import java.util.*;
-import java.io.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.twilio.Twilio;
 import com.twilio.jwt.accesstoken.AccessToken;
 import com.twilio.jwt.accesstoken.VideoGrant;
 import com.twilio.rest.video.v1.Room;
@@ -20,8 +18,6 @@ public class RoomManager {
 
     private Queue<Room> rooms = new LinkedList<>();
 
-    long rollingRoomId = 0;
-
     Random rand = new Random();
 
     public RoomManager() {
@@ -34,10 +30,9 @@ public class RoomManager {
         if(!rooms.isEmpty()){
             room = rooms.poll();
         }else{
-            room = Room.creator().setUniqueName("" + rollingRoomId).create();
+            room = Room.creator().setUniqueName("" + rand.nextInt(1000000000)).create();
 
             rooms.add(room);
-            rollingRoomId++;
         }
         VideoGrant grant = new VideoGrant().setRoom(room.getUniqueName());
         AccessToken token = new AccessToken.Builder(

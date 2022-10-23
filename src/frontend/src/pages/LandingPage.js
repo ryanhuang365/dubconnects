@@ -19,13 +19,20 @@ export default function LandingPage( { validation } ) {
       }
     }else{
       const validationCode = input.current.value;
-      const validity = fetch(`http://localhost:8080/checkCode/${validationCode}` /*`https://dubconnects.azurewebsites.net/checkCode/${validationCode`*/, { method: 'GET' });
-      if(validity){
-        console.log("validation success");
-        validation(true);
-      }else{
-        input.current.value = "invalid code";
-      }
+      const validityPromise = fetch(`http://localhost:8080/checkCode/${validationCode}` /*`https://dubconnects.azurewebsites.net/checkCode/${validationCode}`*/, { method: 'GET' });
+      
+      
+      validityPromise.then(response => {
+        return response.text();
+      }).then(data => {
+        if(data == "true"){
+          console.log("validation success");
+          validation(true);
+        }else{
+          input.current.value = "invalid code";
+        }
+      });
+      
     }
   }
   
