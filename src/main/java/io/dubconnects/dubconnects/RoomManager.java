@@ -4,10 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.twilio.Twilio;
 import com.twilio.jwt.accesstoken.AccessToken;
@@ -15,6 +12,7 @@ import com.twilio.jwt.accesstoken.VideoGrant;
 import com.twilio.rest.video.v1.Room;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class RoomManager {
 
     @Autowired
