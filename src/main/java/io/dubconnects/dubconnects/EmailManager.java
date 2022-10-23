@@ -10,16 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Service
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmailManager {
     
     @Autowired
     private JavaMailSender mailSender;
  
     // should check on front end if the email ends with @uw.edu 
-
+    @GetMapping("/verify/{email}")
+    public void verifyEmail(@PathVariable String email) throws MessagingException, UnsupportedEncodingException {
+        System.out.println("recieved: " + email);
+        sendVerificationEmail(email);
+       
+    }
     
     // call sendVerificationEmail when the email submit button is pressed
     // change User to String email passed in by frontend textbox
