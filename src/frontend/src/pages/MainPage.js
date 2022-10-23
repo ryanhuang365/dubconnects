@@ -5,7 +5,7 @@ export default function MainPage() {
 
   const { connect, createLocalTracks } = require('twilio-video');
 
-  fetch('http://localhost:8080/rooms/join', { method: 'GET' })
+  fetch('http://localhost:8080/rooms/join' /*'https://dubconnects.azurewebsites.net/rooms/join'*/, { method: 'GET' })
   .then(response => {
     return response.text();
   }).then(data => {
