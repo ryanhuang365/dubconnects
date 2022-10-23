@@ -1,19 +1,22 @@
 import './App.scss'
-import React from 'react';
+import {React, useState} from 'react';
 import LandingPage from './pages/LandingPage';
 import Logo from './img/Logo.png';
 import MainPage from './pages/MainPage';
 
 function App() {
+  const [validated, setValidity] = useState(false);
+  const validationMethod = (validity) => {
+    console.log('this thing runs');
+    setValidity(true);
+  };
   return (
-<<<<<<< Updated upstream
-    <MainPage />
-=======
     <div className="App">
+    {
       <img src={Logo} alt='Logo' />
-      <LandingPage />
+      validated ? <MainPage /> : <LandingPage validation = {validationMethod}/>
+    }
     </div>
->>>>>>> Stashed changes
   )
 }
 
