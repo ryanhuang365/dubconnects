@@ -22,6 +22,8 @@ public class RoomManager {
 
     long rollingRoomId = 0;
 
+    Random rand = new Random();
+
     public RoomManager() {
 
     }
@@ -42,7 +44,7 @@ public class RoomManager {
                 credentials.getAccountSid(),
                 credentials.getKeySid(),
                 credentials.getKeySecret()
-        ).identity("user").grant(grant).build();
+        ).identity("" + rand.nextInt(100000)).grant(grant).build();
 
         return token.toJwt();
     }
