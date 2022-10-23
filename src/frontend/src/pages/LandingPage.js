@@ -1,12 +1,23 @@
-import React from 'react'
-import Background from '../components/Background'
+import '../App.scss'
+import React, { Component } from 'react';
+import MainPage from './MainPage';
 
-function buttonClicked() {
-  alert('Button clicked!')
+class LandingPage extends Component {
+
+  buttonClicked() {
+    alert('Button clicked!')
+    console.log('Button clicked!');
+  }
+
+  render() {
+    return (
+      <div className="landingpage">
+        {
+          <button onClick={this.buttonClicked}>Join Room</button>
+        }
+      </div>
+    )
+  }
 }
 
-export default function LandingPage() {
-  return (
-    <button onClick={buttonClicked}>Click me!</button>
-  )
-}
+export default LandingPage;

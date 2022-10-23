@@ -1,0 +1,18 @@
+button {
+    background-color: #5F18C8;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+button:disabled {
+    opacity: .4;
+    cursor: initial;
+}
