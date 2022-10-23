@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Video() {
     return (
-        <div>Video</div>
+        <div id='aaa'>Video</div>
     )
 }
