@@ -1,8 +1,8 @@
 import React from 'react'
-import Background from '../components/Background'
+import VideoPlayer from '../components/VideoPlayer'
 
 export default function MainPage() {
   return (
-    <Background />
+    <VideoPlayer />
   )
 }
